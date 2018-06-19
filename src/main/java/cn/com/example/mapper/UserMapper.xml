@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.com.example.mapper.UserMapper">
+	
+	<resultMap type = "cn.com.example.model.User" id = "realResultMap">
+	    <result property = "id" column = "id" />
+	    <result property = "userName" column = "user_name" />
+	    <result property = "password" column = "password"/>
+	    <result property = "age" column = "age"/>
+	</resultMap>
+	
+    <select id = "selectUserById" parameterType = "int" resultMap = "realResultMap">
+        select * from user_t where id = #{userId}
+    </select>
+</mapper> 
