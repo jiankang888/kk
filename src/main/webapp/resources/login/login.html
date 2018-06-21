@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="../static/h-ui/css/H-ui.css" rel="stylesheet" type="text/css" />
+	<link href="。。/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />		
+    <style type="text/css">
+        .slider{position:relative;text-align:center; margin:0 auto;z-index:1}
+		.slider .bd,.slider .bd li,.slider .bd img{width:960px; height:272px}/*请给每个幻灯片套个div并设置id，通过id重置这个地方的宽度，达到自定义效果*/
+		.slider .bd{z-index:2;overflow:hidden;margin:0 auto}
+		.slider .bd li{position:relative;margin:0 auto;width: 100%;overflow:hidden; background-position:center; background-repeat:no-repeat}
+		.slider .bd li a{ display:block; width: 100%; height: 100%}
+		.slider .bd li img{display:block}
+		.slider .hd{ position: absolute; z-index: 3; left: 0; right: 0; bottom:10px; padding: 0 10px; text-align: center}
+		.slider .hd li{display:inline-block;text-align:center;margin-right:10px;cursor:pointer;background-color:#C2C2C2}
+		.slider .hd li.active{background-color:#222}
+		  /*圆点*/
+		  .dots li{width:10px; height:10px;font-size:0px;line-height:0px;border-radius:50%}
+		  /*数字*/
+		  .numbox li{width:20px; height:20px; line-height:20px; font-size:13px;font-family:Arial;font-weight:bold; text-indent:inherit}
+		  .numbox li.active{color:#fff}
+		  /*长方条*/
+		  .rectangle li{width:40px; height:10px;font-size:0px;line-height:0px}
+    </style>
+</head>
+<body>
+    <div id="slider-3">
+	<div class="slider">
+		<div class="bd">
+			<ul>
+				<li><a href="#" target="_blank"><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1529569004&di=e605591ac6165e2f2729952569080eb1&src=http://imgsrc.baidu.com/imgad/pic/item/bf096b63f6246b60553a62a0e1f81a4c510fa22a.jpg" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529579655911&di=80eeaa024fbddbc684a64783a5ca03f8&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F4a36acaf2edda3ccd53548ea0be93901203f9223.jpg" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529579656044&di=073a0878140b24a02efee3f6a08e918a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F8b82b9014a90f6037cb445933312b31bb151edda.jpg" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529579656043&di=a377e8a867c46acbdceb44c8d7e1f5f1&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F5%2F532931489604e.jpg" /></a></li>
+			</ul>
+		</div>
+		<ol class="hd cl dots">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ol>
+	</div>
+</div>
+<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="../lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+	jQuery("#slider-3 .slider")
+	.slide({mainCell:".bd ul",titCell:".hd li",trigger:"click",effect:"leftLoop",autoPlay:true,delayTime:700,interTime:7000,pnLoop:false,titOnClassName:"active"})});
+</script>	
+</body>
+
+</html>
