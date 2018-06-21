@@ -14,9 +14,8 @@
     <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
     <mvc:annotation-driven/>
     <!-- 静态资源处理  css js imgs -->
-    <!-- 
-    <mvc:resources location="/resources/**" mapping="/resources"/>
-     -->
+    <mvc:resources location="/resources/" mapping="/resources/**" />
+    
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->  
     <bean id="mappingJackson2HttpMessageConverter"  
         class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
