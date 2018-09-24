@@ -35,7 +35,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/userData",method = RequestMethod.POST)
+	@RequestMapping(value = "/userData",method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> selectUserById(@RequestParam("userId") int userId,HttpServletRequest request) {
 
