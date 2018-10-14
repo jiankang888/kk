@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.com.login.mapper.LoginMapper">
+
+   <resultMap type="cn.com.login.model.LoginModel" id="lm">
+		<id property="id" column="id" />
+		<result property="nickName" column="nick_name" />
+		<result property="password" column="password" />
+	</resultMap>
+	
+    <insert id="register" parameterType="cn.com.login.model.LoginModel" useGeneratedKeys="true" keyProperty="id">
+      insert into login(nick_name , password) values( #{nickName}, #{password});
+    </insert>
+    
+    <select id="login" parameterType="string" resultMap="lm">
+        select id , nick_name , password from login where nick_name = #{nickName};
+    </select>
+    
+</mapper>
