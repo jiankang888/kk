@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.com.position.mapper.PositionMapper">
+
+    <resultMap type="cn.com.position.model.PositionModel" id="pm">
+         <result property="area" column="area" />
+         <result property="city" column="city" />
+         <result property="province" column="province" />    
+    </resultMap>
+    
+    <select id="getAllPosition" resultMap="pm">
+         select a.area , b.city , c.province from areas a , cities b , provinces c where c.province_id = b.province_id and b.city_id = a.city_id;
+    </select>
+
+</mapper>

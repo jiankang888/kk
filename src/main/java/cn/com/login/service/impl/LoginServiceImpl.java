@@ -1,5 +1,7 @@
 package cn.com.login.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +28,13 @@ public class LoginServiceImpl implements LoginService{
 		// TODO Auto-generated method stub
 		return loginMapper.login(nickName);
 	}
+
+	@Override
+	public List<LoginModel> findAllAccount() {
+		// TODO Auto-generated method stub
+		return loginMapper.findAllAccount();
+	}
+	
+	
 
 }

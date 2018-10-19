@@ -1,5 +1,7 @@
 package cn.com.login.mapper;
 
+import java.util.List;
+
 import cn.com.login.model.LoginModel;
 
 public interface LoginMapper {
@@ -8,5 +10,6 @@ public interface LoginMapper {
 	
 	public LoginModel login(String nickName);
 		
+	public List<LoginModel> findAllAccount();
 	
 }

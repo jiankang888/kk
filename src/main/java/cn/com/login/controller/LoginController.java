@@ -30,7 +30,7 @@ public class LoginController {
     	
     	try {
     		loginService.register(loginModel);
-    		result.put("data", "OK");
+    		result.put("success", "true");
     	} catch(Exception e) {
     		e.printStackTrace();
     	}
@@ -57,4 +57,23 @@ public class LoginController {
     	return result;
     	
     }
+    
+    @RequestMapping(value="/login/allAccount" , method=RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> findAllAccount(){
+    	
+    	Map<String, Object> result = new HashMap<>();
+    	
+    	try {
+    		result.put("Data", loginService.findAllAccount());
+			result.put("success", "true");
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", "false");
+			e.printStackTrace();
+		}
+    	
+    	return result;
+    	
+    }	
 }

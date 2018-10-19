@@ -18,4 +18,8 @@
         select id , nick_name , password from login where nick_name = #{nickName};
     </select>
     
+    <select id="findAllAccount" resultMap="lm">
+        select * from login;
+    </select>
+    
 </mapper>
