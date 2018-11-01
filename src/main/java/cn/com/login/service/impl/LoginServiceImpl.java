@@ -18,7 +18,6 @@ public class LoginServiceImpl implements LoginService{
 	private LoginMapper loginMapper;
 	
 	@Override
-	@Transactional
 	public void register(LoginModel loginModel) {
 		loginMapper.register(loginModel);
 	}

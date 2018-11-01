@@ -2,22 +2,42 @@
 <beans xmlns="http://www.springframework.org/schema/beans"  
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
     xmlns:context="http://www.springframework.org/schema/context"  
-    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:jms="http://www.springframework.org/schema/jms"
+    xmlns:amq="http://activeamq.apache.org/schema/core"
+    xmlns:c="http://www.springframework.org/schema/c"  
     xsi:schemaLocation="http://www.springframework.org/schema/beans    
                         http://www.springframework.org/schema/beans/spring-beans.xsd    
                         http://www.springframework.org/schema/context    
-                        http://www.springframework.org/schema/context/spring-context.xsd    
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/jms
+                        http://www.springframework.org/schema/spring-jms.xsd
+                        http://activeamq.apache.org/schema/core
+                        http://activeamq.apache.org/schema/core/activemq-core.xsd
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc.xsd">  
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->  
     <context:component-scan base-package="cn.com" />  
-    <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
+    <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->  
     <mvc:annotation-driven/>
     <!-- 静态资源处理  css js imgs -->
     <mvc:resources location="/resources/" mapping="/resources/**" />
-    
    
-      
+    <bean id="connectionFactory" 
+             class="org.apache.activemq.spring.ActiveMQConnectionFactory" />
+               
+    <bean id="queue" 
+        class="org.apache.activemq.command.ActiveMQQueue" 
+        c:_="kk.queue" />
+        
+    <bean id="topic" 
+        class="org.apache.activemq.command.ActiveMQTopic" 
+        c:_="kk.topic" /> 
+        
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate" 
+             c:_-ref="connectionFactory" 
+             p:defaultDestinationName="kk.queue"/>
+
     <!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->  
     <bean id="multipartResolver"    
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    

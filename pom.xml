@@ -17,8 +17,13 @@
     </properties> 
     
     <dependencies>
-    
-		    <!--日志包-->
+	    <!-- https://mvnrepository.com/artifact/aspectj/aspectjweaver -->
+		<dependency>
+		    <groupId>aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.5.4</version>
+        </dependency>
+		<!--日志包-->
 		<!-- slf4j核心包-->
 		<dependency>
 		    <groupId>org.slf4j</groupId>
@@ -76,7 +81,11 @@
             <artifactId>spring-core</artifactId>  
             <version>${spring.version}</version>  
         </dependency>
-          
+        <dependency>
+	      <groupId>org.springframework</groupId>
+	      <artifactId>spring-jms</artifactId>
+	      <version>${spring.version}</version>
+	    </dependency>
         <dependency>  
             <groupId>org.springframework</groupId>  
             <artifactId>spring-web</artifactId>  
@@ -109,7 +118,7 @@
             <artifactId>spring-aop</artifactId>  
             <version>${spring.version}</version>  
         </dependency>  
-        
+         
         <dependency>  
             <groupId>org.springframework</groupId>  
             <artifactId>spring-context-support</artifactId>  

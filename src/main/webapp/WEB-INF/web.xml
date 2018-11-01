@@ -5,14 +5,13 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring-mybatis.xml</param-value>
   </context-param>
-  <!-- webRoot根路径key值配置 。获取webapp根目录-->  
-    <context-param>    
-        <param-name>webAppRootKey</param-name>     
-        <param-value>kk.root</param-value>    
-    </context-param>    
-    <listener>     
-        <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>     
-    </listener>  
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>kk.root</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+  </listener>
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
