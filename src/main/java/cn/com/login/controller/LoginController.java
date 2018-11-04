@@ -2,22 +2,27 @@ package cn.com.login.controller;
 
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsOperations;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.RequestToViewNameTranslator;
 
 import cn.com.login.model.LoginModel;
 import cn.com.login.service.LoginService;
@@ -37,9 +42,20 @@ public class LoginController {
 	
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> register(@RequestBody LoginModel loginModel){
+    public Map<String, String> register(@Valid @RequestBody LoginModel loginModel , BindingResult bindingResult){
     	
     	Map<String, String> result =  new HashMap<String, String>();
+    	
+    	if( bindingResult.hasErrors() ) {
+    		List<ObjectError> errorList = bindingResult.getAllErrors();
+    		for(ObjectError objectError : errorList) {
+    			logger.info(objectError.getDefaultMessage());
+    			result.put("data", objectError.getDefaultMessage());
+    		}
+    		
+    		result.put("success", "false");
+    		return result;
+    	}
     	
     	try {
     		loginService.register(loginModel);

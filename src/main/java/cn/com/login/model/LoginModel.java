@@ -1,10 +1,15 @@
 package cn.com.login.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class LoginModel{
 	
 	private Integer id;
+	@NotBlank
+	@Size(min=5,max=200,message="This nickName length is too small or to too large. ")
 	private String nickName;
+	@NotBlank
 	private String password;
 	public Integer getId() {
 		return id;
